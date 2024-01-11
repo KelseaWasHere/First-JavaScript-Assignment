@@ -2,6 +2,7 @@
 The first assignment completed in my Computer Graphics class. 
 
 Description: 
+
 A. Create a JavaScript program that will have a main class that will store information about the
 lucky number game and contains the playGame() function.
 
