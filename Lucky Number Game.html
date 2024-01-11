@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lucky Number Game</title>
+</head>
+
+<body>
+  <center>
+    <h1>Lucky Number Game</h1>
+    <p>Click the button to play the game. Two random numbers between 1 and 100 will be generated. If the second number is larger than the first number, you win!</p>
+    <button type="button" onclick="onClick()">Click to Play Game</button> <p> </p>
+  
+	<div id="firstNum"></div>
+	<div id="secondNum"></div>
+	<div id="WinOrLose"></div>
+	<br>
+	
+	<img hidden id="image" src="" width="100" height="100">
+	<div id="imageStatus"></div>
+   </center>
+  <script>
+    class Main {
+      constructor() {
+        this.winCount = 0;
+        this.lossCount = 0;
+      }
+
+      playGame() {
+        var firstNum = Math.floor(Math.random() * 100) + 1;
+        var secondNum = Math.floor(Math.random() * 100) + 1;
+        var img = document.getElementById("image");
+
+        document.getElementById("firstNum").innerHTML = firstNum;
+        document.getElementById("secondNum").innerHTML = secondNum;
+		
+		img.removeAttribute("hidden");
+
+        if (secondNum > firstNum) {
+          document.getElementById("WinOrLose").innerHTML = "You Win!";
+          this.winCount++;
+        } else {
+          document.getElementById("WinOrLose").innerHTML = "You Lose!";
+          this.lossCount++;
+        }
+
+        if (this.winCount > this.lossCount) {
+          img.src = "smiley-face.png";
+		  document.getElementById("imageStatus").innerHTML = "You currently have more wins than losses!";
+        } else if (this.lossCount > this.winCount) {
+          img.src = "sad-face.png";
+		  document.getElementById("imageStatus").innerHTML = "You currently have more losses than wins!";
+        } else {
+		  img.src = "neutral-face.png";
+		  document.getElementById("imageStatus").innerHTML = "You currently have the same amount of wins and losses!"; 
+		}
+      }
+    }
+
+    const main = new Main();
+
+    function onClick() {
+      main.playGame();
+    }
+  </script>
+</body>
+</html>
